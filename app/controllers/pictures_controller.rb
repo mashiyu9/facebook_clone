@@ -60,6 +60,12 @@ class PicturesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def confirm
+    @picture = Picture.new(picture_params)
+    @picture.user_id = current_user.id
+    @picture.id = params[:id]
+    render :new if @picture.invalid?
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
