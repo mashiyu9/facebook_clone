@@ -1,3 +1,30 @@
-// Place all the styles related to the pictures controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+header{
+  background-color: #47639f;
+  .account{
+    font-size: 3rem;
+    margin-top: 10px;
+  }
+  padding: 10px;
+}
+form{
+  margin-top: 40px;
+  display: block;
+}
+.wrap{
+  padding: 30px 0;
+}
+
+
+table{
+  tr{
+    td{
+      padding-top: 15px;
+    }
+  }
+}
+
+footer{
+  height: 60px;
+  background-color: #47639f;
+}

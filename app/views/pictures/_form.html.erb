@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+  <div class="container">
 
   <div class="field">
     <%= form.label :title %>
@@ -17,7 +18,7 @@
   </div>
 
   <div class="field">
-    <%= form. label:CONTENT %>
+    <%= form. label :content%>
     <%= form.text_area :content %>
   </div>
   <div class="field">
@@ -27,5 +28,6 @@
 
   <div class="actions">
     <%= form.submit %>
+  </div>
   </div>
 <% end %>

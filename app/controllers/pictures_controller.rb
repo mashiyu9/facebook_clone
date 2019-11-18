@@ -1,10 +1,12 @@
 class PicturesController < ApplicationController
-  before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :set_picture, only: [:show, :edit, :update, :destroy, :test]
+  before_action :test, only: [:edit, :destroy, :update]
 
   # GET /pictures
   # GET /pictures.json
   def index
     @pictures = Picture.all
+    # binding.pry
   end
 
   # GET /pictures/1
@@ -26,6 +28,9 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(picture_params)
     @picture.user_id = current_user.id
+    if params[:back]
+      render :new and return
+    end
     respond_to do |format|
       if @picture.save
         format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
@@ -67,6 +72,12 @@ class PicturesController < ApplicationController
     render :new if @picture.invalid?
   end
 
+  def test 
+    if current_user.id != @picture.user_id
+      redirect_to pictures_path, notice: "権限がありません"
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_picture
@@ -75,6 +86,6 @@ class PicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
-      params.require(:picture).permit(:title, :content, :user_id)
+      params.require(:picture).permit(:title, :content, :user_id, :image, :image_cache)
     end
 end

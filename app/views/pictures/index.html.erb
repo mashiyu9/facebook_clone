@@ -1,6 +1,5 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Pictures</h1>
+<h1>一覧</h1>
 
 <table>
   <thead>
@@ -18,9 +17,13 @@
         <td><%= picture.title %></td>
         <td><%= picture.content %></td>
         <td><%= picture.user.name %></td>
-        <td><%= link_to 'Show', picture %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if logged_in? %>
+           <% if current_user.id == picture.user.id %>
+            <td><%= link_to 'Show', picture %></td>
+            <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+            <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +31,6 @@
 
 <br>
 
+<% if logged_in? %>
 <%= link_to 'New Picture', new_picture_path %>
+<% end %>

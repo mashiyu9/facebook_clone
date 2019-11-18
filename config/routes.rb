@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # root 'user#new'
   resources :pictures do
     collection do 
       patch :confirm
