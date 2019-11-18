@@ -12,7 +12,11 @@
 
 <p>
   <strong>User:</strong>
-  <%= @picture.user %>
+  <%= @picture.user.name %>
+</p>
+<p>
+  <strong>Image:</strong>
+  <%= @picture.image.url %>
 </p>
 
 <%= link_to 'Edit', edit_picture_path(@picture) %> |
