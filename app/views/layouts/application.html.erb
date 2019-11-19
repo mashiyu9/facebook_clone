@@ -28,7 +28,9 @@
   <% flash.each do |key, value| %>
     <%= content_tag(:div, value, class: "#{key}") %>
   <% end %>
-  <%= link_to 'New Picture', new_picture_path %>
+  <% if logged_in? %>
+    <%= link_to 'New Picture', new_picture_path %>
+  <% end %>
 
   <%= yield %>
 </div>
