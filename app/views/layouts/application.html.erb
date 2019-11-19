@@ -16,7 +16,7 @@
 
   </header>
   <div class="wrap container">
-        <% if logged_in? %>
+    <% if logged_in? %>
       <%= link_to "マイページ", user_path(current_user.id) %>
       <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
       <%= link_to 'New Picture', new_picture_path %>
@@ -28,6 +28,8 @@
   <% flash.each do |key, value| %>
     <%= content_tag(:div, value, class: "#{key}") %>
   <% end %>
+  <%= link_to 'New Picture', new_picture_path %>
+
   <%= yield %>
 </div>
 <footer>
