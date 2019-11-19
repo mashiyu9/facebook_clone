@@ -23,3 +23,4 @@ module MyFacebook
     config.time_zone = "Tokyo"
   end
 end
+
