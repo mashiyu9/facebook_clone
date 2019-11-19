@@ -21,3 +21,7 @@ $(document).ready(function () {
   hsize = $(window).height();
   $(".wrap").css("min-height", hsize + "px");
 });
+$(window).on('load resize', function(){
+  hsize = $(window).height();
+  $(".wrap").css("min-height", hsize + "px");
+});

@@ -45,13 +45,18 @@ class PicturesController < ApplicationController
   # PATCH/PUT /pictures/1
   # PATCH/PUT /pictures/1.json
   def update
-    respond_to do |format|
-      if @picture.update(picture_params)
-        format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
-        format.json { render :show, status: :ok, location: @picture }
-      else
-        format.html { render :edit }
-        format.json { render json: @picture.errors, status: :unprocessable_entity }
+    if params[:back]
+      @picture = Picture.new(picture_params)
+      render :edit
+    else
+      respond_to do |format|
+        if @picture.update(picture_params)
+          format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
+          format.json { render :show, status: :ok, location: @picture }
+        else
+          format.html { render :edit }
+          format.json { render json: @picture.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -72,7 +77,7 @@ class PicturesController < ApplicationController
     render :new if @picture.invalid?
   end
 
-  def test 
+  def test
     if current_user.id != @picture.user_id
       redirect_to pictures_path, notice: "権限がありません"
     end
@@ -86,6 +91,6 @@ class PicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
-      params.require(:picture).permit(:title, :content, :user_id, :image, :image_cache)
+      params.require(:picture).permit(:id, :title, :content, :user_id, :image, :image_cache)
     end
 end

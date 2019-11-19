@@ -13,10 +13,14 @@
   <strong>User:</strong>
   <%= @picture.user.name %>
 </p>
+  <% if @picture.image.url.present? %>
 <p>
   <strong>Image:</strong>
+
     <%= image_tag @picture.image.url %>
 </p>
+
+    <% end %>
 
 <%= link_to 'Edit', edit_picture_path(@picture) %> |
 <%= link_to 'Back', pictures_path %>
