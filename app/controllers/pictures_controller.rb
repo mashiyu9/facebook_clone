@@ -6,7 +6,6 @@ class PicturesController < ApplicationController
   # GET /pictures.json
   def index
     @pictures = Picture.all
-    # binding.pry
   end
 
   # GET /pictures/1
