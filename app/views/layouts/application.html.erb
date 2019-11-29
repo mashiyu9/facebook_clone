@@ -23,6 +23,8 @@
       <%= link_to "会員登録", new_user_path %>
       <%= link_to "ログイン", new_session_path %>
     <% end %>
+      <p><%= link_to 'ユーザー一覧', users_path if logged_in? %></p>
+
     
   <% flash.each do |key, value| %>
     <%= content_tag(:div, value, class: "#{key}") %>

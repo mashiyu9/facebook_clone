@@ -13,14 +13,24 @@
   <strong>User:</strong>
   <%= @picture.user.name %>
 </p>
-  <% if @picture.image.url.present? %>
+<% if @picture.image.url.present? %>
 <p>
   <strong>Image:</strong>
 
-    <%= image_tag @picture.image.url %>
+  <%= image_tag @picture.image.url %>
 </p>
 
-    <% end %>
+<% end %>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<div id="comments_area">
+  <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+  <%= render partial: 'comments/index', locals: { comments: @comments, picture: @picture } %>
+</div>
+
+<!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+<%= render partial: 'comments/form', locals: { comment: @comment, picture: @picture } %>
+
+</div>
+
+<%= link_to 'Edit', edit_picture_path(@picture) %>
 <%= link_to 'Back', pictures_path %>

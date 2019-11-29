@@ -2,4 +2,19 @@
 
 <p>メールアドレス: <%= @user.email %></p>
 
-<%= link_to '記事一覧', pictures_path %>
+<div class="following_user">
+  <h2>フォローしている人</h2>
+  <% @user.following.each do |user| %>
+    <p><%= user.name  %> </p>
+  <% end %>
+</div>
+
+<div class="folloed_user">
+  <h2>フォローしてくれてる人</h2>
+  <% @user.followers.each do |user| %>
+    <p><%= user.name  %> </p>
+  <% end %>
+</div>
+
+
+  <%= link_to '記事一覧', pictures_path %>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # root 'user#new'
+  resources :relationships, only: [:create, :destroy]
   resources :pictures do
+    resources :comments
     collection do 
       patch :confirm
       post :confirm
@@ -9,8 +10,11 @@ Rails.application.routes.draw do
       patch :confirm 
     end    
   end
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:index, :new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
+  resources :conversations do
+    resources :messages
+  end
 
   root to: 'users#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

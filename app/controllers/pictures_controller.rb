@@ -11,6 +11,8 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
+    @comments = @picture.comments
+    @comment = @picture.comments.build
   end
 
   # GET /pictures/new
@@ -92,4 +94,4 @@ class PicturesController < ApplicationController
     def picture_params
       params.require(:picture).permit(:id, :title, :content, :user_id, :image, :image_cache)
     end
-end
+  end
