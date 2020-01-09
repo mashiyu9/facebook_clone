@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :pictures do
     resources :comments
-    collection do 
+    collection do
       patch :confirm
       post :confirm
     end
-    member do 
-      patch :confirm 
-    end    
+    member do
+      patch :confirm
+    end
   end
   resources :users, only: [:index, :new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
