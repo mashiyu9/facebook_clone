@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'users#new'
   resources :relationships, only: [:create, :destroy]
   resources :pictures do
     resources :comments
@@ -16,6 +17,5 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  root to: 'users#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
